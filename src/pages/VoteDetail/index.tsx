@@ -1,6 +1,7 @@
 import React from 'react';
 
 import {Wrap} from '@src/pages/styles';
+import CommentList from '@src/pages/VoteDetail/CommentList';
 import {VoteContents} from '@src/pages/VoteDetail/styles';
 import VoteComments from '@src/pages/VoteDetail/VoteComments';
 import VoteSection from '@src/pages/VoteDetail/VoteSection';
@@ -18,11 +19,16 @@ export default () => {
     });
 
     return (
-        <Wrap>
-            <VoteContents>
-                <VoteSection details={details} />
+        <>
+            <Wrap>
+                <VoteContents>
+                    <VoteSection details={details} />
+                </VoteContents>
+            </Wrap>
+            <Wrap>
                 <VoteComments />
-            </VoteContents>
-        </Wrap>
+                <CommentList />
+            </Wrap>
+        </>
     );
 };
