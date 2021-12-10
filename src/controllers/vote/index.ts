@@ -15,7 +15,7 @@ class VoteController extends CommonController {
     }
     public static async getVotePosts (req: Request, res: Response, next: NextFunction) {
         try {
-            await VoteMethods.getVotePosts(req.body);
+            res.locals.response = await VoteMethods.getVotePosts(req.body);
         } catch {
 
         }

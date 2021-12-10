@@ -21,7 +21,8 @@ class VoteDao extends CommonDao {
 
         }
         const query = `SELECT count(*) FROM vote_post LIMIT ${pageSize} OFFSET ${(page || 0) * pageSize} ORDER BY createdAt DESC`
-
+        console.log(await this.select<VotePost>(query));
+        
         return await this.select<VotePost>(query);
     }
 }
