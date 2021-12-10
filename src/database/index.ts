@@ -9,6 +9,7 @@ class CommonDao {
             username: process.env.DB_USER,
             database: process.env.DB_NAME,
             password: process.env.DB_PASS,
+            schema: process.env.DB_NAME,
         });
     }
 

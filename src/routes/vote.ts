@@ -1,9 +1,9 @@
-import app from '../app';
+import express from 'express'
 import VoteController from '../controllers/vote';
 
-const voteRouter = app;
+const voteRouter = express.Router();
 
-voteRouter.get('/', VoteController.getVotes);
+voteRouter.get('/', VoteController.getVotePosts);
 voteRouter.post('/', VoteController.vote);
 
 export default voteRouter;
