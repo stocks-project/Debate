@@ -5,8 +5,24 @@
   "repository": "https://github.com/stocks-project/Debate.git",
   "author": "hbm <hbmin3789@naver.com>",
   "license": "MIT",
+  "scripts": {
+    "start": "nodemon src/index.ts"
+  },
   "dependencies": {
+    "@types/cors": "^2.8.12",
+    "@types/express": "^4.17.13",
+    "@types/helmet": "^4.0.0",
+    "@types/sequelize": "^4.28.10",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
-    "sequelize": "^6.12.0-beta.2"
+    "global": "^4.4.0",
+    "helmet": "^4.6.0",
+    "mysql2": "^2.3.3",
+    "nodemon": "^2.0.15",
+    "sequelize": "^6.12.0-beta.2",
+    "sequelize-cli": "^6.3.0",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.3"
   }
 }

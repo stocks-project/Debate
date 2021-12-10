@@ -1,0 +1,30 @@
+{
+  "local": {
+    "username": "min",
+    "password": "1234",
+    "database": "vote",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+    },
+  "development": {
+    "username": "min",
+    "password": "1234",
+    "database": "vote",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "min",
+    "password": "1234",
+    "database": "vote",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "min",
+    "password": "1234",
+    "database": "vote",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}
