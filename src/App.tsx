@@ -1,6 +1,6 @@
-import {BrowserRouter, Route, Router, Routes} from 'react-router-dom';
+import {BrowserRouter, Route, Routes} from 'react-router-dom';
 
-import Vote from '@src/pages/Vote';
+import Vote from '@src/pages/VoteDetail';
 import VoteList from '@src/pages/Votelist';
 
 const App = () => {
@@ -9,7 +9,7 @@ const App = () => {
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<VoteList />} />
-                    <Route path="/vote" element={<Vote />} />
+                    <Route path="/vote/:voteId" element={<Vote />} />
                 </Routes>
             </BrowserRouter>
         </>
