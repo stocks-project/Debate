@@ -3,6 +3,7 @@ import { QueryTypes, Sequelize } from "sequelize";
 class CommonDao {
     protected static sequelize: Sequelize;
     public static async init() {
+        
         this.sequelize = new Sequelize({
             dialect: 'mysql',
             host: process.env.DB_HOST,
@@ -14,8 +15,7 @@ class CommonDao {
     }
 
     public static async select<T extends Object>(query: string): Promise<T[]> {
-        const [result, _] = await this.sequelize.query<T[]>(query, {type: QueryTypes.SELECT});
-        return result;
+        return await this.sequelize.query<T>(query, {type: QueryTypes.SELECT});
     }
     public static async insert(query: string): Promise<any> {
         const [result, _] = await this.sequelize.query(query, {type: QueryTypes.INSERT});
