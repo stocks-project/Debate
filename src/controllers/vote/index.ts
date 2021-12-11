@@ -21,6 +21,16 @@ class VoteController extends CommonController {
         }
         next();
     }
+
+    public static async getVotePostDetail (req: Request, res: Response, next: NextFunction) {
+        try {
+            res.locals.response = await VoteMethods.getVotePostDetail(req.query);
+        } catch (e) {
+            next(e);
+        }
+        next();
+    }
+
     public static async createVotePost (req: Request, res: Response, next: NextFunction) {
         try {
             const result = await VoteMethods.createVotePost(req.body, req.ip.split('f:')[1]);

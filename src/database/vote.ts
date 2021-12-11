@@ -32,6 +32,21 @@ class VoteDao extends CommonDao {
         return await this.select<VotePost>(query);
     }
 
+    public static async getVotePostDetail(id: number): Promise<VotePost> {
+        const postQuery = `SELECT * FROM vote_post WHERE id=${id}`;
+        const voteCountQuery = `SELECT count(*) as count, selected_type FROM vote.vote_log WHERE post_id = ${id} GROUP BY selected_type ORDER BY selected_type ASC;`;
+        const posts: VotePost[] = await this.select<VotePost>(postQuery);
+        const voteCount = await this.select<{count: number}>(voteCountQuery);
+        const post = posts[0];        
+
+        if (voteCount.length) {
+            const total = voteCount[0].count + voteCount[1].count;
+            post.negativePercent = voteCount[0].count / total;
+            post.positivePercent = voteCount[1].count / total;
+        }
+        return post;
+    }
+
     public static async createVotePost(title: string, content: string, ip: string, comment: number): Promise<VotePost[]> {
         const userIdQuery = `SELECT * FROM vote_user WHERE ip='${ip}'`;
         const user = await this.select<User>(userIdQuery);

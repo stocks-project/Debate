@@ -11,6 +11,15 @@ class VoteMethods {
         return await VoteDao.getVotePosts();
     }
 
+
+    public static async getVotePostDetail(query: any) {
+        const { id } = query;
+        const votePost = await VoteDao.getVotePostDetail(id);
+        return {
+            votePost,
+        };
+    }
+
     public static async createVotePost(body: any, ip: string) {
         const { title, content, comment } = body;
         return await VoteDao.createVotePost(title, content,ip, comment);

@@ -19,7 +19,4 @@ app.use('/user', userRouter);
 app.use(errorHandler);
 app.use(successHandler);
 
-
-
-
 export default app;
