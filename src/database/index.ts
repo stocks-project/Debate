@@ -18,8 +18,10 @@ class CommonDao {
         return await this.sequelize.query<T>(query, {type: QueryTypes.SELECT});
     }
     public static async insert(query: string): Promise<any> {
-        const [result, _] = await this.sequelize.query(query, {type: QueryTypes.INSERT});
-        return result;
+        return await this.sequelize.query(query, {type: QueryTypes.INSERT});
+    }
+    public static async update(query: string): Promise<any> {
+        return await this.sequelize.query(query, {type: QueryTypes.UPDATE});
     }
 }
 

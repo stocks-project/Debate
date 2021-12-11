@@ -1,6 +1,6 @@
 import CommonDao from "./index";
 import { VoteLog, VotePost } from "../controllers/vote/interfaces";
-import User from "../controllers/user";
+import User from "../controllers/user/interfaces";
 
 class VoteDao extends CommonDao {
     public static async vote(postId: number, voteType: number, ip: string): Promise<boolean> {
@@ -32,11 +32,11 @@ class VoteDao extends CommonDao {
         return await this.select<VotePost>(query);
     }
 
-    public static async createVotePost(title: string, content: string, ip: string): Promise<VotePost[]> {
+    public static async createVotePost(title: string, content: string, ip: string, comment: number): Promise<VotePost[]> {
         const userIdQuery = `SELECT * FROM vote_user WHERE ip='${ip}'`;
         const user = await this.select<User>(userIdQuery);
         if(user.length) {
-            const insertQuery = `INSERT INTO vote_post (title,content,writer_id) values ('${title}','${content}',${user[0].id})`;        
+            const insertQuery = `INSERT INTO vote_post (title,content,writer_id, comment) values ('${title}','${content}',${user[0].id}, ${comment})`;        
             return await this.insert(insertQuery);   
         }
         throw new Error('Check User IP');

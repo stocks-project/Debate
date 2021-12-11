@@ -12,8 +12,8 @@ class VoteMethods {
     }
 
     public static async createVotePost(body: any, ip: string) {
-        const { title, content } = body;
-        return await VoteDao.createVotePost(title, content,ip);;
+        const { title, content, comment } = body;
+        return await VoteDao.createVotePost(title, content,ip, comment);
     }
 }
 
