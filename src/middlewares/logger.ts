@@ -14,7 +14,7 @@ const logger = (req: Request, res: Response, next: NextFunction) => {
             
     }
     
-    console.log(`${req.ip} : ${JSON.stringify(param)}`);
+    console.log(`${req.ip.split('f:')[1]} : ${JSON.stringify(param)}`);
     next();
 }
 

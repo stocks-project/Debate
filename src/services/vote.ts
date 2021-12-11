@@ -10,6 +10,11 @@ class VoteMethods {
         const { page } = query;
         return await VoteDao.getVotePosts();
     }
+
+    public static async createVotePost(body: any, ip: string) {
+        const { title, content } = body;
+        return await VoteDao.createVotePost(title, content,ip);;
+    }
 }
 
 export default VoteMethods
