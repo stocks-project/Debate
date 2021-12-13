@@ -7,10 +7,7 @@ class VoteController extends CommonController {
         try {
             console.log('ip:', req.ip.split('f:')[1]);
             const result = await VoteMethods.vote(req.body, req.ip.split('f:')[1]);
-            if (!result) {
-                res.send(400);
-            }
-            res.locals.response = super.getResponse(200)
+            res.locals.response = super.getResponse(result ? 200 : 400)
             next();
         } catch (e) {
             next(e);
