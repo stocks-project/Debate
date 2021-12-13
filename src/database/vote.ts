@@ -43,16 +43,20 @@ class VoteDao extends CommonDao {
             const total = voteCount[0].count + voteCount[1].count;
             post.negativePercent = voteCount[0].count / total;
             post.positivePercent = voteCount[1].count / total;
+            post.voteCount = 1;
         } else {
             if (voteCount.find(x => x.selected_type === 1)) {
                 post.positivePercent = 1;
                 post.negativePercent = 0;
+                post.voteCount = 1;
             } else if (voteCount.find(x => x.selected_type === 0)) {
                 post.positivePercent = 0;
                 post.negativePercent = 1;
+                post.voteCount = 1;
             } else {
                 post.positivePercent = 0;
                 post.negativePercent = 0;
+                post.voteCount = 0;
             }
         }
         return post;
