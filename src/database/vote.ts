@@ -36,13 +36,23 @@ class VoteDao extends CommonDao {
         const postQuery = `SELECT * FROM vote_post WHERE id=${id}`;
         const voteCountQuery = `SELECT count(*) as count, selected_type FROM vote.vote_log WHERE post_id = ${id} GROUP BY selected_type ORDER BY selected_type ASC;`;
         const posts: VotePost[] = await this.select<VotePost>(postQuery);
-        const voteCount = await this.select<{count: number}>(voteCountQuery);
+        const voteCount = await this.select<{count: number, selected_type: number}>(voteCountQuery);
         const post = posts[0];        
 
         if (voteCount.length === 2) {
             const total = voteCount[0].count + voteCount[1].count;
             post.negativePercent = voteCount[0].count / total;
             post.positivePercent = voteCount[1].count / total;
+        } else {
+            if (voteCount.find(x => x.selected_type === 1)) {
+                post.positivePercent = 1;
+                post.negativePercent = 0;
+            }
+
+            if (voteCount.find(x => x.selected_type === 0)) {
+                post.positivePercent = 0;
+                post.negativePercent = 1;
+            }
         }
         return post;
     }
