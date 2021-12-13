@@ -16,7 +16,7 @@ export const BarWrap = styled.div`
 `;
 
 export const EventBar = styled.div`
-    width: 75%;
+    width: 70%;
     height: 20px;
     border: none;
     border-radius: 20px;
@@ -63,7 +63,7 @@ export const AgreeButton = styled.button`
     );
 `;
 
-export const OppositionButton = styled.button`
+export const OpposeButton = styled.button`
     cursor: pointer;
     width: 45%;
     padding: 20px 0;

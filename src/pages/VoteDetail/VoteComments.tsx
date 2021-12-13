@@ -10,7 +10,7 @@ const VoteComments = () => {
     return (
         <div>
             <VoteCommentName>익명</VoteCommentName>
-            <VoteComment />
+            <VoteComment defaultValue="" />
             <VoteCommentButton>의견 입력하기</VoteCommentButton>
         </div>
     );

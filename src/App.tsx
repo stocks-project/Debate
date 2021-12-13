@@ -9,7 +9,7 @@ const App = () => {
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<VoteList />} />
-                    <Route path="/vote/:voteId" element={<Vote />} />
+                    <Route path="/vote/:postId" element={<Vote />} />
                 </Routes>
             </BrowserRouter>
         </>
