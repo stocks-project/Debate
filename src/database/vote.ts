@@ -39,7 +39,7 @@ class VoteDao extends CommonDao {
         const voteCount = await this.select<{count: number}>(voteCountQuery);
         const post = posts[0];        
 
-        if (voteCount.length) {
+        if (voteCount.length === 2) {
             const total = voteCount[0].count + voteCount[1].count;
             post.negativePercent = voteCount[0].count / total;
             post.positivePercent = voteCount[1].count / total;
