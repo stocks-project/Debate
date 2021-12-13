@@ -47,11 +47,12 @@ class VoteDao extends CommonDao {
             if (voteCount.find(x => x.selected_type === 1)) {
                 post.positivePercent = 1;
                 post.negativePercent = 0;
-            }
-
-            if (voteCount.find(x => x.selected_type === 0)) {
+            } else if (voteCount.find(x => x.selected_type === 0)) {
                 post.positivePercent = 0;
                 post.negativePercent = 1;
+            } else {
+                post.positivePercent = 0;
+                post.negativePercent = 0;
             }
         }
         return post;
