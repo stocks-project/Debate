@@ -11,9 +11,15 @@ export interface VotePost {
     imgSrc: string;
 }
 
+export interface VotePostDetail extends VotePost {
+    comments: VoteComment[];
+}
+
 export interface VoteComment {
+    postId: number;
     user: User;
     content: string;
+    createdAt: string;
 }
 
 export interface VoteLog {

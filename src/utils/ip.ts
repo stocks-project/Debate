@@ -1,0 +1,1 @@
+export const getIp = (ip: string) => ip.split('f:')[1];

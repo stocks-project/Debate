@@ -1,4 +1,5 @@
 import { QueryTypes, Sequelize } from "sequelize";
+import User from "../controllers/user/interfaces";
 
 class CommonDao {
     protected static sequelize: Sequelize;
@@ -22,6 +23,10 @@ class CommonDao {
     }
     public static async update(query: string): Promise<any> {
         return await this.sequelize.query(query, {type: QueryTypes.UPDATE});
+    }
+
+    public static async getUserByIp(ip: string): Promise<User | undefined> {
+        return (await this.select<User>(`SELECT * FROM vote_user WHERE ip='${ip}'`))?.at(0);
     }
 }
 
