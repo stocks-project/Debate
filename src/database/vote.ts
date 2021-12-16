@@ -39,7 +39,7 @@ class VoteDao extends CommonDao {
         const voteCountQuery = `SELECT count(*) as count, selected_type FROM vote.vote_log WHERE post_id = ${id} GROUP BY selected_type ORDER BY selected_type ASC;`;
         const commentQuery = `SELECT user_id, content, createdAt FROM vote_comment WHERE post_id = ${id}`;
         const user = await super.getUserByIp(ip);
-        const isVoteQuery = `SELECT count(*) as count FROM vote_log WHERE user_id = ${user.id} AND post_id=${id}`;
+        const isVoteQuery = `SELECT count(*) as count FROM vote_log WHERE user_id = ${user?.id} AND post_id=${id}`;
         const isVote = (await this.select<{count: number}>(isVoteQuery)).at(0)?.count;
         const comments = await this.select<VoteComment>(commentQuery);
         const posts: VotePost[] = await this.select<VotePost>(postQuery);
@@ -68,7 +68,7 @@ class VoteDao extends CommonDao {
         }
         return {
             ...post,
-            isVote,
+            isVote: isVote || 0,
             comments,
         };
     }
