@@ -13,6 +13,7 @@ export interface VotePost {
 
 export interface VotePostDetail extends VotePost {
     comments: VoteComment[];
+    isVote: number;
 }
 
 export interface VoteComment {
